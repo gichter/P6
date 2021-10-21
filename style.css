@@ -8,6 +8,11 @@ html {
   font-family: sans-serif;
 }
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #111;
+}
+
 li {
   list-style: none;
 }
@@ -137,4 +142,16 @@ a {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+}
+
+.category_carousel {
+  display: flex;
+  display: flex;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.movie_carousel {
+  margin: 5px;
+  padding: 5px;
 }
