@@ -14,7 +14,6 @@ function createCategoriesMenu() {
   var menu = document.getElementById("categories");
 
   menuData.results.forEach(function (object) {
-    console.log(object.name);
     var link = document.createElement("a");
     link.append(document.createTextNode(object.name));
     link.setAttribute(
@@ -37,3 +36,28 @@ function loadData() {
     document.body.insertBefore(newDiv, currentDiv);
   }
 }
+
+function createCarousel() {
+  const genres = ["action", "History", "Sci-Fi"];
+  var i = 0;
+  genres.forEach(function (genre) {
+    url =
+      "http://localhost:8000/api/v1/titles/?genre=" + genre + "&page_size=7";
+    data = httpGet(url);
+    console.log(url);
+    i++;
+    var carousel = document.getElementById("carousel_" + i);
+    console.log(data.results);
+    data.results.forEach(function (object) {
+      console.log(object.title);
+      var item = document.createElement("img");
+      item.src = object.image_url;
+      item.classList.add("movie_carousel");
+      carousel.appendChild(item);
+    });
+  });
+}
+
+window.onload = function () {
+  createCarousel();
+};

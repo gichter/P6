@@ -28,46 +28,30 @@
         </li>
       </ul>
     </nav>
+
+<header class="banner">
+      <div class="banner__contents">
+        <h1 class="banner__title">Money Heist</h1>
+        <div class="banner__buttons">
+          <button class="banner__button">Regarder</button>
+          <button class="banner__button">Plus d'informations</button>
+        </div>
+        <h1 class="banner__description">
+          To carry out the biggest heist in history, a mysterious man called The Professor recruits
+          a band of eight robbers who have a single characteristic: n...
+        </h1>
+      </div>
+      <div class="banner--fadeBottom"></div>
+    </header>
+
+
     </div>
     <div id="demo">
-      <button type="button" onclick="loadData()">Charge Content</button>
+      <button type="button" onclick="createCarousel()">Charge Content</button>
       <button type="button" onclick="createCategoriesMenu()">Charge Menu</button>
     </div>
-    <div class='category_carousel'>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BNjA5Y2ZhYzctNDc1Yy00OGViLWI3NGUtOTYwZmE3NDFiYmIxXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UY268_CR72,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src='https://m.media-amazon.com/images/M/MV5BNTY4ZDk5MzYtNjk2Zi00ZWY3LTgwZjUtNDc5MWEzMWFlOTQzXkEyXkFqcGdeQXVyNjU1MTEwMjI@._V1_UY268_CR1,0,182,268_AL_.jpg'>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BNjU1NDMyNGEtODJkYy00M2Y4LTk5YzItYTYxMzkzZWI1MmJiXkEyXkFqcGdeQXVyMzI5NDcxNzI@._V1_UY268_CR5,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-    </div>
-    <div class='category_carousel'>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BNjA5Y2ZhYzctNDc1Yy00OGViLWI3NGUtOTYwZmE3NDFiYmIxXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UY268_CR72,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src='https://m.media-amazon.com/images/M/MV5BNTY4ZDk5MzYtNjk2Zi00ZWY3LTgwZjUtNDc5MWEzMWFlOTQzXkEyXkFqcGdeQXVyNjU1MTEwMjI@._V1_UY268_CR1,0,182,268_AL_.jpg'>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BNjU1NDMyNGEtODJkYy00M2Y4LTk5YzItYTYxMzkzZWI1MmJiXkEyXkFqcGdeQXVyMzI5NDcxNzI@._V1_UY268_CR5,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-    </div>
-    <div class='category_carousel'>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BNjA5Y2ZhYzctNDc1Yy00OGViLWI3NGUtOTYwZmE3NDFiYmIxXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UY268_CR72,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src='https://m.media-amazon.com/images/M/MV5BNTY4ZDk5MzYtNjk2Zi00ZWY3LTgwZjUtNDc5MWEzMWFlOTQzXkEyXkFqcGdeQXVyNjU1MTEwMjI@._V1_UY268_CR1,0,182,268_AL_.jpg'>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BNjU1NDMyNGEtODJkYy00M2Y4LTk5YzItYTYxMzkzZWI1MmJiXkEyXkFqcGdeQXVyMzI5NDcxNzI@._V1_UY268_CR5,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-    </div>
-    <div class='category_carousel'>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BNjA5Y2ZhYzctNDc1Yy00OGViLWI3NGUtOTYwZmE3NDFiYmIxXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UY268_CR72,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src='https://m.media-amazon.com/images/M/MV5BNTY4ZDk5MzYtNjk2Zi00ZWY3LTgwZjUtNDc5MWEzMWFlOTQzXkEyXkFqcGdeQXVyNjU1MTEwMjI@._V1_UY268_CR1,0,182,268_AL_.jpg'>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BNjU1NDMyNGEtODJkYy00M2Y4LTk5YzItYTYxMzkzZWI1MmJiXkEyXkFqcGdeQXVyMzI5NDcxNzI@._V1_UY268_CR5,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-      <img class='movie_carousel' src="https://m.media-amazon.com/images/M/MV5BZTcyMGU4ZmYtYTVmYS00NWFkLWExM2MtYWRlYTlhOWYxNjYwXkEyXkFqcGdeQXVyMzE0MjY5ODA@._V1_UY268_CR7,0,182,268_AL_.jpg"/>
-    </div>
+    <div class='category_carousel' id='carousel_1'></div>
+    <div class='category_carousel' id='carousel_2'></div>
+    <div class='category_carousel' id='carousel_3'></div>
   </body>
 </html>
