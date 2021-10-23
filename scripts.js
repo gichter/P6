@@ -51,8 +51,22 @@ function createCarousel() {
   var i = 0;
   urls.forEach(function (url) {
     data = httpGet(url);
-    console.log(data);
+    if (data.results.length > 7) {
+      movieData = httpGet(
+        "http://localhost:8000/api/v1/titles/" + data.results[0].id
+      );
+      banner_title = document.getElementById("banner_title");
+      title = document.createTextNode(data.results[0].title);
+      banner_title.appendChild(title);
+      banner_description = document.getElementById("banner_description");
+      description = document.createTextNode(movieData.description);
+      banner_description.appendChild(description);
 
+      banner_image = document.getElementById("banner_image");
+      banner_image.style.backgroundImage = "url(" + movieData.image_url + ")";
+
+      data.results.shift();
+    }
     i++;
     var title = document.getElementById("row_title_" + i);
     t = document.createTextNode(titles[i - 1]);
