@@ -9,7 +9,6 @@ function httpGet(url) {
 function createCategoriesMenu() {
   url = "http://localhost:8000/api/v1/genres/?page_size=50";
   menuData = httpGet(url);
-  console.log(menuData);
 
   var menu = document.getElementById("categories");
 
@@ -27,7 +26,6 @@ function createCategoriesMenu() {
 function loadData() {
   data = httpGet("http://localhost:8000/api/v1/titles/");
   for (var i = 0; i < data.results.length; i++) {
-    console.log(data.results[i]);
     var newDiv = document.createElement("a");
     var newContent = document.createTextNode(data.results[i].title);
     newDiv.appendChild(newContent);
@@ -38,26 +36,45 @@ function loadData() {
 }
 
 function createCarousel() {
-  const genres = ["action", "History", "Sci-Fi"];
+  const urls = [
+    "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&page_size=8",
+    "http://localhost:8000/api/v1/titles/?genre=action&page_size=7",
+    "http://localhost:8000/api/v1/titles/?genre=History&page_size=7",
+    "http://localhost:8000/api/v1/titles/?genre=Sci-Fi&page_size=7",
+  ];
+  const titles = [
+    "Films les mieux notés",
+    "Action",
+    "Histoire",
+    "Science-Fiction",
+  ];
   var i = 0;
-  genres.forEach(function (genre) {
-    url =
-      "http://localhost:8000/api/v1/titles/?genre=" + genre + "&page_size=7";
+  urls.forEach(function (url) {
     data = httpGet(url);
-    console.log(url);
+    console.log(data);
+
     i++;
+    var title = document.getElementById("row_title_" + i);
+    t = document.createTextNode(titles[i - 1]);
+    title.appendChild(t);
     var carousel = document.getElementById("carousel_" + i);
-    console.log(data.results);
     data.results.forEach(function (object) {
-      console.log(object.title);
       var item = document.createElement("img");
       item.src = object.image_url;
-      item.classList.add("movie_carousel");
+      item.classList.add("row__poster", "row__posterLarge");
       carousel.appendChild(item);
     });
   });
 }
 
+function createBanner() {
+  url = "http://localhost:8000/api/v1/titles/";
+  banner = document.getElementById("banner");
+  //console.log(banner);
+}
+
 window.onload = function () {
+  createBanner();
   createCarousel();
+  createCategoriesMenu();
 };
