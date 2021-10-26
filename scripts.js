@@ -51,6 +51,7 @@ function createCarousel() {
   var i = 0;
   urls.forEach(function (url) {
     data = httpGet(url);
+    // Banner creation
     if (data.results.length > 7) {
       movieData = httpGet(
         "http://localhost:8000/api/v1/titles/" + data.results[0].id
@@ -72,13 +73,46 @@ function createCarousel() {
     t = document.createTextNode(titles[i - 1]);
     title.appendChild(t);
     var carousel = document.getElementById("carousel_" + i);
+    // For each movie, add a section in the carousel
     data.results.forEach(function (object) {
-      var item = document.createElement("img");
+      var modal = document.createElement("div");
+      modal.classList.add("modal");
+      modal.id = "myModal";
+      modal_content = document.createElement("div");
+      modal_content.classList.add("modal-content");
+
+      var close = document.createElement("span");
+      close.classList.add("close");
+      close.appendChild(document.createTextNode("X"));
+      close.setAttribute("onClick", "closeModal()");
+      modal_content.appendChild(close);
+
+      var p = document.createElement("p");
+      c = document.createTextNode("modal");
+      p.appendChild(c);
+      modal_content.appendChild(p);
+      modal.appendChild(modal_content);
+      var content = document.createElement("p");
+      content.appendChild(document.createTextNode("Modal content"));
+      console.log(modal);
+      var item = document.createElement("input");
+      item.setAttribute("onClick", "openModal()");
+      item.type = "image";
+      item.id = "myBtn";
       item.src = object.image_url;
       item.classList.add("row__poster", "row__posterLarge");
       carousel.appendChild(item);
+      carousel.appendChild(modal);
     });
   });
+
+  // Get the modal
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+  console.log(btn);
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
 }
 
 function createBanner() {
@@ -92,3 +126,31 @@ window.onload = function () {
   createCarousel();
   createCategoriesMenu();
 };
+
+// When the user clicks on the button, open the modal
+btn.onclick = function () {
+  modal.style.display = "block";
+  console.log("ping");
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+  console.log("ok");
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
+function openModal() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "block";
+}
+function closeModal() {
+  var modal = document.getElementById("myModal");
+  modal.style.display = "none";
+}
