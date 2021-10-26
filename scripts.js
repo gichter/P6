@@ -75,34 +75,13 @@ function createCarousel() {
     var carousel = document.getElementById("carousel_" + i);
     // For each movie, add a section in the carousel
     data.results.forEach(function (object) {
-      var modal = document.createElement("div");
-      modal.classList.add("modal");
-      modal.id = "myModal";
-      modal_content = document.createElement("div");
-      modal_content.classList.add("modal-content");
-
-      var close = document.createElement("span");
-      close.classList.add("close");
-      close.appendChild(document.createTextNode("X"));
-      close.setAttribute("onClick", "closeModal()");
-      modal_content.appendChild(close);
-
-      var p = document.createElement("p");
-      c = document.createTextNode("modal");
-      p.appendChild(c);
-      modal_content.appendChild(p);
-      modal.appendChild(modal_content);
-      var content = document.createElement("p");
-      content.appendChild(document.createTextNode("Modal content"));
-      console.log(modal);
       var item = document.createElement("input");
-      item.setAttribute("onClick", "openModal()");
+      item.setAttribute("onClick", "openModal(" + object.id + ")");
       item.type = "image";
       item.id = "myBtn";
       item.src = object.image_url;
       item.classList.add("row__poster", "row__posterLarge");
       carousel.appendChild(item);
-      carousel.appendChild(modal);
     });
   });
 
@@ -146,11 +125,27 @@ window.onclick = function (event) {
   }
 };
 
-function openModal() {
-  var modal = document.getElementById("myModal");
-  modal.style.display = "block";
+function openModal(movieId) {
+  movieData = httpGet("http://localhost:8000/api/v1/titles/" + movieId);
+  console.log(movieData);
+  var main_div = document.createElement("div");
+  main_div.id = "main_div";
+
+  var title = document.createElement("h1");
+  title.appendChild(document.createTextNode(movieData.title));
+  main_div.appendChild(title);
+
+  var modal = document.getElementById("modalContent");
+  modal.appendChild(main_div);
+  var modal_display = document.getElementById("myModal");
+
+  modal_display.style.display = "block";
 }
+
 function closeModal() {
+  destroy_div = document.getElementById("main_div");
+  destroy_div.remove();
+
   var modal = document.getElementById("myModal");
   modal.style.display = "none";
 }
