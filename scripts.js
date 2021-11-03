@@ -128,24 +128,86 @@ window.onclick = function (event) {
 function openModal(movieId) {
   movieData = httpGet("http://localhost:8000/api/v1/titles/" + movieId);
   console.log(movieData);
-  var main_div = document.createElement("div");
-  main_div.id = "main_div";
 
   var title = document.createElement("h1");
+  title.id = "modal-title";
   title.appendChild(document.createTextNode(movieData.title));
-  main_div.appendChild(title);
 
-  var modal = document.getElementById("modalContent");
-  modal.appendChild(main_div);
+  var description = document.createElement("span");
+  description.id = "modal-description";
+  description.appendChild(document.createTextNode(movieData.description));
+
+  var genres = document.createElement("span");
+  genres.id = "modal-genres";
+  genres.appendChild(document.createTextNode("Genres : " + movieData.genres));
+
+  var date = document.createElement("span");
+  date.id = "modal-date";
+  date.appendChild(
+    document.createTextNode("Date de sortie : " + movieData.date_published)
+  );
+
+  var rating = document.createElement("span");
+  rating.id = "modal-rating";
+  rating.appendChild(document.createTextNode(movieData.avg_votes + "/10"));
+
+  var imdb = document.createElement("span");
+  imdb.id = "modal-imdb";
+  imdb.appendChild(document.createTextNode(movieData.imdb_score + "/10"));
+
+  var director = document.createElement("span");
+  director.id = "modal-director";
+  director.appendChild(
+    document.createTextNode("Réalisateur : " + movieData.directors)
+  );
+
+  var actors = document.createElement("span");
+  actors.id = "modal-actors";
+  actors.appendChild(document.createTextNode("Acteurs : " + movieData.actors));
+
+  var country = document.createElement("span");
+  country.id = "modal-country";
+  country.appendChild(
+    document.createTextNode("Pays d'origine : " + movieData.countries[0])
+  );
+
+  var duration = document.createElement("span");
+  duration.id = "modal-duration";
+  duration.appendChild(
+    document.createTextNode(movieData.duration + " minutes")
+  );
+
+  var income = document.createElement("span");
+  income.id = "modal-income";
+  income.appendChild(document.createTextNode(movieData.worldwide_gross_income));
+
+  var modal = document.getElementById("modal-text");
+  console.log(modal);
+  modal.appendChild(title);
+  modal.appendChild(description);
+  modal.appendChild(genres);
+  modal.appendChild(date);
+  modal.appendChild(rating);
+  modal.appendChild(imdb);
+  modal.appendChild(director);
+  modal.appendChild(actors);
+  modal.appendChild(country);
+  modal.appendChild(duration);
+  modal.appendChild(income);
+
+  var modal_image = document.getElementById("modal-image");
+  modal_image.style.backgroundImage = "url(" + movieData.image_url + ")";
+
   var modal_display = document.getElementById("myModal");
-
   modal_display.style.display = "block";
 }
 
 function closeModal() {
-  destroy_div = document.getElementById("main_div");
-  destroy_div.remove();
-
+  reset_modal = document.getElementById("modal-text");
+  while (reset_modal.firstChild) {
+    reset_modal.removeChild(reset_modal.lastChild);
+    console.log(reset_modal);
+  }
   var modal = document.getElementById("myModal");
   modal.style.display = "none";
 }
