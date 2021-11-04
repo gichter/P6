@@ -6,6 +6,11 @@ function httpGet(url) {
   return data;
 }
 
+function slide() {
+  console.log("lol");
+  document.getElementById("carousel_1").scrollLeft += 50;
+}
+
 function createCategoriesMenu() {
   url = "http://localhost:8000/api/v1/genres/?page_size=50";
   menuData = httpGet(url);
@@ -37,10 +42,10 @@ function loadData() {
 
 function createCarousel() {
   const urls = [
-    "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&page_size=8",
-    "http://localhost:8000/api/v1/titles/?genre=action&page_size=7",
-    "http://localhost:8000/api/v1/titles/?genre=History&page_size=7",
-    "http://localhost:8000/api/v1/titles/?genre=Sci-Fi&page_size=7",
+    "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&page_size=20",
+    "http://localhost:8000/api/v1/titles/?genre=action&page_size=19",
+    "http://localhost:8000/api/v1/titles/?genre=History&page_size=19",
+    "http://localhost:8000/api/v1/titles/?genre=Sci-Fi&page_size=19",
   ];
   const titles = [
     "Films les mieux notés",
@@ -52,7 +57,7 @@ function createCarousel() {
   urls.forEach(function (url) {
     data = httpGet(url);
     // Banner creation
-    if (data.results.length > 7) {
+    if (data.results.length > 19) {
       movieData = httpGet(
         "http://localhost:8000/api/v1/titles/" + data.results[0].id
       );
@@ -126,6 +131,11 @@ window.onclick = function (event) {
 };
 
 function openModal(movieId) {
+  reset_modal = document.getElementById("modal-text");
+  while (reset_modal.firstChild) {
+    reset_modal.removeChild(reset_modal.lastChild);
+    console.log(reset_modal);
+  }
   movieData = httpGet("http://localhost:8000/api/v1/titles/" + movieId);
   console.log(movieData);
 
