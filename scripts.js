@@ -6,9 +6,12 @@ function httpGet(url) {
   return data;
 }
 
-function slide() {
-  console.log("lol");
-  document.getElementById("carousel_1").scrollLeft += 50;
+function slide(id, way) {
+  if (way == "right") {
+    document.getElementById("carousel_" + id).scrollLeft += 50;
+  } else {
+    document.getElementById("carousel_" + id).scrollLeft -= 50;
+  }
 }
 
 function createCategoriesMenu() {
@@ -138,72 +141,91 @@ function openModal(movieId) {
   }
   movieData = httpGet("http://localhost:8000/api/v1/titles/" + movieId);
   console.log(movieData);
+  var modal = document.getElementById("modal-text");
 
   var title = document.createElement("h1");
   title.id = "modal-title";
   title.appendChild(document.createTextNode(movieData.title));
-
-  var description = document.createElement("span");
-  description.id = "modal-description";
-  description.appendChild(document.createTextNode(movieData.description));
-
-  var genres = document.createElement("span");
-  genres.id = "modal-genres";
-  genres.appendChild(document.createTextNode("Genres : " + movieData.genres));
-
-  var date = document.createElement("span");
-  date.id = "modal-date";
-  date.appendChild(
-    document.createTextNode("Date de sortie : " + movieData.date_published)
-  );
-
-  var rating = document.createElement("span");
-  rating.id = "modal-rating";
-  rating.appendChild(document.createTextNode(movieData.avg_votes + "/10"));
-
-  var imdb = document.createElement("span");
-  imdb.id = "modal-imdb";
-  imdb.appendChild(document.createTextNode(movieData.imdb_score + "/10"));
-
-  var director = document.createElement("span");
-  director.id = "modal-director";
-  director.appendChild(
-    document.createTextNode("Réalisateur : " + movieData.directors)
-  );
-
-  var actors = document.createElement("span");
-  actors.id = "modal-actors";
-  actors.appendChild(document.createTextNode("Acteurs : " + movieData.actors));
-
-  var country = document.createElement("span");
-  country.id = "modal-country";
-  country.appendChild(
-    document.createTextNode("Pays d'origine : " + movieData.countries[0])
-  );
-
-  var duration = document.createElement("span");
-  duration.id = "modal-duration";
-  duration.appendChild(
-    document.createTextNode(movieData.duration + " minutes")
-  );
-
-  var income = document.createElement("span");
-  income.id = "modal-income";
-  income.appendChild(document.createTextNode(movieData.worldwide_gross_income));
-
-  var modal = document.getElementById("modal-text");
-  console.log(modal);
   modal.appendChild(title);
-  modal.appendChild(description);
-  modal.appendChild(genres);
-  modal.appendChild(date);
-  modal.appendChild(rating);
-  modal.appendChild(imdb);
-  modal.appendChild(director);
-  modal.appendChild(actors);
-  modal.appendChild(country);
-  modal.appendChild(duration);
-  modal.appendChild(income);
+
+  if (movieData.description) {
+    var description = document.createElement("span");
+    description.id = "modal-description";
+    description.appendChild(document.createTextNode(movieData.description));
+    modal.appendChild(description);
+  }
+  if (movieData.genres) {
+    var genres = document.createElement("span");
+    genres.id = "modal-genres";
+    genres.appendChild(document.createTextNode("Genres : " + movieData.genres));
+    modal.appendChild(genres);
+  }
+  if (movieData.date_published) {
+    var date = document.createElement("span");
+    date.id = "modal-date";
+    date.appendChild(
+      document.createTextNode("Date de sortie : " + movieData.date_published)
+    );
+    modal.appendChild(date);
+  }
+  if (movieData.avg_votes) {
+    var rating = document.createElement("span");
+    rating.id = "modal-rating";
+    rating.appendChild(
+      document.createTextNode(
+        "Note des spectateurs : " + movieData.avg_votes + "/10"
+      )
+    );
+    modal.appendChild(rating);
+  }
+  if (movieData.imdb_score) {
+    var imdb = document.createElement("span");
+    imdb.id = "modal-imdb";
+    imdb.appendChild(
+      document.createTextNode("Score IMDB : " + movieData.imdb_score + "/10")
+    );
+    modal.appendChild(imdb);
+  }
+  if (movieData.directors) {
+    var director = document.createElement("span");
+    director.id = "modal-director";
+    director.appendChild(
+      document.createTextNode("Réalisateur : " + movieData.directors)
+    );
+    modal.appendChild(director);
+  }
+  if (movieData.actors) {
+    var actors = document.createElement("span");
+    actors.id = "modal-actors";
+    actors.appendChild(
+      document.createTextNode("Acteurs : " + movieData.actors)
+    );
+    modal.appendChild(actors);
+  }
+  if (movieData.countries) {
+    var country = document.createElement("span");
+    country.id = "modal-country";
+    country.appendChild(
+      document.createTextNode("Pays d'origine : " + movieData.countries[0])
+    );
+    modal.appendChild(country);
+  }
+  if (movieData.duration) {
+    var duration = document.createElement("span");
+    duration.id = "modal-duration";
+    duration.appendChild(
+      document.createTextNode("Durée : " + movieData.duration + " minutes")
+    );
+    modal.appendChild(duration);
+  }
+  if (movieData.worldwide_gross_income) {
+    var income = document.createElement("span");
+    income.id = "modal-income";
+    income.appendChild(
+      document.createTextNode("Recettes : " + movieData.worldwide_gross_income)
+    );
+    modal.appendChild(income);
+  }
 
   var modal_image = document.getElementById("modal-image");
   modal_image.style.backgroundImage = "url(" + movieData.image_url + ")";

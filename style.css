@@ -220,8 +220,15 @@ a {
   overflow-y: hidden;
   overflow-x: scroll;
   padding: 20px;
+  transition: margin-left 0.2s ease, left 0.5s ease;
 }
-
+.slide {
+  background-color: #f00;
+  float: left;
+  position: relative;
+  top: 0;
+  transition: width 0.2s ease, height 0.2s ease, top 0.2s ease;
+}
 .row__poster:hover {
   transform: scale(1.08);
 }
@@ -249,6 +256,28 @@ a {
   transition: transform 450ms;
 }
 
+.slider-frame {
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.btn {
+  width: 40px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  border-style: none;
+  font-size: 2em;
+  color: rgb(255, 255, 255);
+}
+.prev {
+  left: 0px;
+}
+.next {
+  right: 0px;
+}
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */

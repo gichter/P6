@@ -58,14 +58,29 @@
     </div>
     <div class="row">
       <h2 id="row_title_1"></h2>
-        <div class='row__posters' id='carousel_1'></div>  
-        <button id="slide" onclick="slide()">Slide right</button>
+      <div class="slider-frame">
+      <div class='row__posters' id='carousel_1'></div>  
+        <button id="slide" class="btn prev" onclick="slide(1, 'left')"><</button>
+        <button id="slide" class="btn next" onclick="slide(1, 'right')">></button>
+      </div>
       <h2 id="row_title_2"></h2>
+      <div class="slider-frame">
         <div class='row__posters' id='carousel_2'></div>
+        <button id="slide" class="btn prev" onclick="slide(2, 'left')"><</button>
+        <button id="slide" class="btn next" onclick="slide(2, 'right')">></button>
+      </div>
       <h2 id="row_title_3"></h2>
+      <div class="slider-frame">
         <div class='row__posters' id='carousel_3'></div>
+        <button id="slide" class="btn prev" onclick="slide(3, 'left')"><</button>
+        <button id="slide" class="btn next" onclick="slide(3, 'right')">></button>
+      </div>
       <h2 id="row_title_4"></h2>
-        <div class='row__posters' id='carousel_4'></div>
+      <div class="slider-frame">
+      <div class='row__posters' id='carousel_4'></div>
+        <button id="slide" class="btn prev" onclick="slide(4, 'left')"><</button>
+        <button id="slide" class="btn next" onclick="slide(4, 'right')">></button>
+      </div>
     </div>
   </body>
 
