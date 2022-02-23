@@ -8,9 +8,9 @@ function httpGet(url) {
 
 function slide(id, way) {
   if (way == "right") {
-    document.getElementById("carousel_" + id).scrollLeft += 50;
+    document.getElementById("carousel_" + id).scrollLeft += 180;
   } else {
-    document.getElementById("carousel_" + id).scrollLeft -= 50;
+    document.getElementById("carousel_" + id).scrollLeft -= 180;
   }
 }
 
@@ -45,10 +45,10 @@ function loadData() {
 
 function createCarousel() {
   const urls = [
-    "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&page_size=20",
-    "http://localhost:8000/api/v1/titles/?genre=action&page_size=19",
-    "http://localhost:8000/api/v1/titles/?genre=History&page_size=19",
-    "http://localhost:8000/api/v1/titles/?genre=Sci-Fi&page_size=19",
+    "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score&page_size=8",
+    "http://localhost:8000/api/v1/titles/?genre=action&page_size=7",
+    "http://localhost:8000/api/v1/titles/?genre=History&page_size=7",
+    "http://localhost:8000/api/v1/titles/?genre=Sci-Fi&page_size=7",
   ];
   const titles = [
     "Films les mieux notés",
@@ -60,7 +60,7 @@ function createCarousel() {
   urls.forEach(function (url) {
     data = httpGet(url);
     // Banner creation
-    if (data.results.length > 19) {
+    if (data.results.length > 7) {
       movieData = httpGet(
         "http://localhost:8000/api/v1/titles/" + data.results[0].id
       );
@@ -96,7 +96,6 @@ function createCarousel() {
   // Get the modal
   // Get the button that opens the modal
   var btn = document.getElementById("myBtn");
-  console.log(btn);
 
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
@@ -105,7 +104,6 @@ function createCarousel() {
 function createBanner() {
   url = "http://localhost:8000/api/v1/titles/";
   banner = document.getElementById("banner");
-  //console.log(banner);
 }
 
 window.onload = function () {
@@ -117,13 +115,11 @@ window.onload = function () {
 // When the user clicks on the button, open the modal
 btn.onclick = function () {
   modal.style.display = "block";
-  console.log("ping");
 };
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
   modal.style.display = "none";
-  console.log("ok");
 };
 
 // When the user clicks anywhere outside of the modal, close it
@@ -137,10 +133,8 @@ function openModal(movieId) {
   reset_modal = document.getElementById("modal-text");
   while (reset_modal.firstChild) {
     reset_modal.removeChild(reset_modal.lastChild);
-    console.log(reset_modal);
   }
   movieData = httpGet("http://localhost:8000/api/v1/titles/" + movieId);
-  console.log(movieData);
   var modal = document.getElementById("modal-text");
 
   var title = document.createElement("h1");
@@ -238,7 +232,6 @@ function closeModal() {
   reset_modal = document.getElementById("modal-text");
   while (reset_modal.firstChild) {
     reset_modal.removeChild(reset_modal.lastChild);
-    console.log(reset_modal);
   }
   var modal = document.getElementById("myModal");
   modal.style.display = "none";

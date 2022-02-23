@@ -146,12 +146,14 @@ a {
 
 /* banner */
 .banner {
-  background-image: url("https://m.media-amazon.com/images/M/MV5BNTY4ZDk5MzYtNjk2Zi00ZWY3LTgwZjUtNDc5MWEzMWFlOTQzXkEyXkFqcGdeQXVyNjU1MTEwMjI@._V1_UY268_CR1,0,182,268_AL_.jpg");
   background-size: cover;
   color: white;
   background-position: center center;
   object-fit: contain;
   height: 448px;
+  background-repeat: no-repeat;
+  background-size: 80% 100%;
+  background-position: right;
 }
 
 .banner__contents {
@@ -210,8 +212,8 @@ a {
 .row__poster {
   width: 100%;
   object-fit: contain;
-  max-height: 100px;
-  margin-right: 10px;
+  height: 500px;
+  margin-right: 100px;
   transition: transform 450ms;
 }
 
@@ -238,7 +240,7 @@ a {
 }
 
 .row__posterLarge {
-  max-height: 250px;
+  max-height: 1000px;
 }
 
 .row__posterLarge:hover {
